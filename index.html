@@ -490,6 +490,15 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const ADMIN_EMAIL = "acc.ahmed.hamed@gmail.com";
+const NOTIFY_URL = "https://script.google.com/macros/s/AKfycbz-dcY50gU6x-ePj4S6ka41-ftu8hF3hzh4evZhBg4a2Z6jfSoD3V1JjFrIpz-cnitq/exec";
+
+function notifyAdmin(name, email) {
+  fetch(NOTIFY_URL, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify({ name: name || "", email: email || "" })
+  }).catch((e) => console.error("notify failed", e));
+}
 
 const $ = (id) => document.getElementById(id);
 
@@ -562,6 +571,7 @@ onAuthStateChanged(auth, async (user) => {
         status: "pending",
         requestedAt: serverTimestamp()
       });
+      notifyAdmin(user.displayName, user.email);
     }
   } catch (e) {
     console.error("Could not create request", e);
