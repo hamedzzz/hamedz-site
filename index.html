@@ -1,5 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Ahmed Hamed</title>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Ahmed Hamed</title>
 <style>
   :root{
     --paper:#eef1ee;
@@ -12,34 +11,8 @@
     --pop:#dd9a3d;
     --line:rgba(18,25,27,0.14);
     --card:#ffffff;
+    --danger:#b3452c;
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --paper:#0c1314;
-      --paper-alt:#111a1b;
-      --ink:#eef1ee;
-      --ink-soft:#a9b7b8;
-      --ink-faint:#77898b;
-      --accent:#39c8c9;
-      --accent-ink:#d4f5f5;
-      --pop:#f0b25c;
-      --line:rgba(238,241,238,0.16);
-      --card:#101919;
-    }
-  }
-  :root[data-theme="dark"]{
-    --paper:#0c1314;
-    --paper-alt:#111a1b;
-    --ink:#eef1ee;
-    --ink-soft:#a9b7b8;
-    --ink-faint:#77898b;
-    --accent:#39c8c9;
-    --accent-ink:#d4f5f5;
-    --pop:#f0b25c;
-    --line:rgba(238,241,238,0.16);
-    --card:#101919;
-  }
-
   *{box-sizing:border-box;}
   body{
     background:var(--paper);
@@ -53,7 +26,7 @@
 
   /* top strip */
   .topbar{
-    position:sticky; top:env(safe-area-inset-top,0px);
+    position:sticky; top:0;
     z-index:20;
     background:var(--paper);
     border-bottom:1px solid var(--line);
@@ -67,7 +40,8 @@
     display:flex; align-items:center; gap:8px;
     font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft);
   }
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(13,138,140,0.25);}
+  .signout-link{font-size:.76rem; color:var(--ink-soft); text-decoration:underline; cursor:pointer; background:none; border:none; font-family:inherit;}
 
   /* hero */
   .hero{padding-block:64px 40px;}
@@ -75,7 +49,7 @@
   @media (max-width:720px){.hero-grid{grid-template-columns:1fr;}}
   .eyebrow{
     font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--accent-ink); background:color-mix(in srgb, var(--accent) 16%, transparent);
+    color:var(--accent-ink); background:rgba(13,138,140,0.16);
     display:inline-block; padding:5px 10px; border-radius:3px; margin-bottom:18px;
   }
   h1{
@@ -84,7 +58,6 @@
     font-size:clamp(2.4rem, 6vw, 3.6rem);
     line-height:1.02;
     margin:0 0 10px 0;
-    text-wrap:balance;
   }
   .role-line{
     font-family:"Fraunces",Georgia,serif;
@@ -181,27 +154,146 @@
     margin-block:20px 60px;
     text-align:center;
   }
-  .cta h2{color:var(--paper); font-size:clamp(1.4rem,3.5vw,2rem); margin-bottom:12px; text-wrap:balance;}
-  .cta p{color:color-mix(in srgb, var(--paper) 70%, transparent); max-width:52ch; margin:0 auto 26px auto; line-height:1.6;}
+  .cta h2{color:var(--paper); font-size:clamp(1.4rem,3.5vw,2rem); margin-bottom:12px;}
+  .cta p{color:rgba(238,241,238,0.7); max-width:52ch; margin:0 auto 26px auto; line-height:1.6;}
   .cta-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
   .btn{
     font-family:"IBM Plex Mono",monospace; font-size:.82rem; letter-spacing:.02em;
     padding:12px 20px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    border:none; cursor:pointer;
   }
   .btn-primary{background:var(--accent); color:#062223;}
-  .btn-ghost{border:1px solid color-mix(in srgb, var(--paper) 35%, transparent); color:var(--paper);}
+  .btn-ghost{border:1px solid rgba(238,241,238,0.35); color:var(--paper); background:none;}
 
   footer{padding-block:26px 50px; text-align:center; font-size:.76rem; color:var(--ink-faint);}
+
+  /* gate */
+  .gate-screen{
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+  }
+  .gate-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    max-width:420px;
+    width:100%;
+    padding:40px 32px;
+    text-align:center;
+  }
+  .gate-monogram{
+    width:56px;height:56px;border-radius:50%;
+    background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:1.3rem;
+    margin:0 auto 20px auto;
+  }
+  .gate-name{font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:1.4rem; margin-bottom:4px;}
+  .gate-role{color:var(--ink-soft); font-size:.92rem; margin-bottom:22px;}
+  .gate-note{font-size:.85rem; color:var(--ink-soft); line-height:1.55; margin-bottom:26px;}
+  .gate-email{font-weight:600; color:var(--ink);}
+  .google-btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    width:100%;
+    background:#fff; color:#3c4043;
+    border:1px solid #dadce0; border-radius:6px;
+    padding:11px 16px; font-size:.9rem; font-weight:500;
+    cursor:pointer; font-family:inherit;
+  }
+  .google-btn:hover{background:#f7f8f8;}
+  .gate-status{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-ink);
+    background:rgba(13,138,140,0.12); padding:6px 12px; border-radius:20px; margin-bottom:18px;
+  }
+  .gate-status.denied{color:var(--danger); background:rgba(179,69,44,0.12);}
+  .gate-signedin{font-size:.82rem; color:var(--ink-faint); margin-top:18px;}
+  .gate-signout{background:none; border:none; text-decoration:underline; color:var(--ink-soft); font-size:.82rem; cursor:pointer; font-family:inherit; margin-top:6px;}
+  [hidden]{display:none!important;}
+
+  /* admin panel */
+  .admin-panel{
+    background:var(--paper-alt);
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-block:24px;
+    padding:20px;
+  }
+  .admin-title{font-family:"IBM Plex Mono",monospace; font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin-bottom:14px;}
+  .admin-row{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:12px 0; border-top:1px solid var(--line); flex-wrap:wrap;
+  }
+  .admin-row:first-of-type{border-top:none;}
+  .admin-who{font-size:.88rem;}
+  .admin-who b{font-weight:600;}
+  .admin-meta{font-size:.72rem; color:var(--ink-faint); margin-top:2px;}
+  .admin-actions{display:flex; gap:8px;}
+  .admin-btn{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; padding:6px 12px; border-radius:5px; border:1px solid var(--line);
+    background:var(--card); cursor:pointer;
+  }
+  .admin-btn.approve{background:var(--accent); color:#062223; border-color:var(--accent);}
+  .admin-btn.deny{background:var(--card); color:var(--danger); border-color:var(--danger);}
+  .admin-btn.revoke{background:var(--card); color:var(--ink-soft);}
+  .admin-empty{font-size:.82rem; color:var(--ink-faint);}
+  .status-chip{font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; padding:2px 8px; border-radius:10px;}
+  .status-chip.pending{background:rgba(221,154,61,0.18); color:#8a5a17;}
+  .status-chip.approved{background:rgba(13,138,140,0.16); color:var(--accent-ink);}
+  .status-chip.denied{background:rgba(179,69,44,0.14); color:var(--danger);}
 </style>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+
+<!-- GATE SCREEN -->
+<div id="gate" class="gate-screen">
+  <div class="gate-card">
+    <div class="gate-monogram">AH</div>
+    <div class="gate-name">Ahmed Hamed</div>
+    <div class="gate-role">Chief Financial Officer</div>
+
+    <div id="gate-signedout">
+      <p class="gate-note">This page is private. Sign in with Google to request access — Ahmed reviews every request personally.</p>
+      <button id="google-signin" class="google-btn">
+        <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84c-.21 1.13-.84 2.09-1.8 2.73v2.27h2.9c1.7-1.57 2.7-3.88 2.7-6.64z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.27c-.8.54-1.83.86-3.06.86-2.35 0-4.34-1.59-5.05-3.72H.98v2.34C2.46 15.98 5.48 18 9 18z"/><path fill="#FBBC05" d="M3.95 10.69A5.4 5.4 0 0 1 3.68 9c0-.59.1-1.16.27-1.69V4.97H.98A9 9 0 0 0 0 9c0 1.45.35 2.83.98 4.03l2.97-2.34z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.51.45 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0 5.48 0 2.46 2.02.98 4.97l2.97 2.34C4.66 5.17 6.65 3.58 9 3.58z"/></svg>
+        Sign in with Google
+      </button>
+    </div>
+
+    <div id="gate-pending" hidden>
+      <div class="gate-status">Request sent</div>
+      <p class="gate-note">Thanks! Your access request is waiting for Ahmed's approval. This page will unlock automatically once approved — no need to refresh.</p>
+      <div class="gate-signedin">Signed in as <span id="pending-email" class="gate-email"></span></div>
+      <button id="signout-pending" class="gate-signout">Sign out</button>
+    </div>
+
+    <div id="gate-denied" hidden>
+      <div class="gate-status denied">Access not granted</div>
+      <p class="gate-note">Your request wasn't approved. If you think this is a mistake, contact <span class="gate-email">hamed@hamedz.com</span>.</p>
+      <div class="gate-signedin">Signed in as <span id="denied-email" class="gate-email"></span></div>
+      <button id="signout-denied" class="gate-signout">Sign out</button>
+    </div>
+
+    <div id="gate-loading">
+      <p class="gate-note">Loading…</p>
+    </div>
+  </div>
+</div>
+
+<!-- UNLOCKED CONTENT -->
+<div id="content" hidden>
 
 <div class="topbar">
   <div class="wrap topbar-inner">
     <div class="topbar-name">Ahmed Hamed</div>
-    <div class="topbar-status"><span class="dot"></span> CFO, epower — Cairo, Egypt</div>
+    <div class="topbar-status"><span class="dot"></span> CFO, epower — Cairo, Egypt <button id="signout-top" class="signout-link">Sign out</button></div>
   </div>
 </div>
+
+<div id="admin-mount"></div>
 
 <div class="hero wrap">
   <div class="hero-grid">
@@ -377,5 +469,181 @@
 </section>
 
 <footer class="wrap">Ahmed Hamed · Chief Financial Officer · Cairo, Egypt</footer>
+
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, onSnapshot, serverTimestamp, collection, updateDoc } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB76LL7AdYvlJbgaczPcVHZie05RpufD6Q",
+  authDomain: "hamedz-site.firebaseapp.com",
+  projectId: "hamedz-site",
+  storageBucket: "hamedz-site.firebasestorage.app",
+  messagingSenderId: "522539507869",
+  appId: "1:522539507869:web:72e9672ffcefd5d8f13474"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const ADMIN_EMAIL = "acc.ahmed.hamed@gmail.com";
+
+const $ = (id) => document.getElementById(id);
+
+const gate = $("gate");
+const content = $("content");
+const gateLoading = $("gate-loading");
+const gateSignedOut = $("gate-signedout");
+const gatePending = $("gate-pending");
+const gateDenied = $("gate-denied");
+
+function showGateState(state) {
+  gateLoading.hidden = state !== "loading";
+  gateSignedOut.hidden = state !== "signedout";
+  gatePending.hidden = state !== "pending";
+  gateDenied.hidden = state !== "denied";
+}
+
+function unlock() {
+  gate.hidden = true;
+  content.hidden = false;
+}
+
+function lock() {
+  gate.hidden = false;
+  content.hidden = true;
+}
+
+$("google-signin").addEventListener("click", async () => {
+  const provider = new GoogleAuthProvider();
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (e) {
+    console.error(e);
+    alert("Sign-in failed. Please try again.");
+  }
+});
+
+[["signout-pending"], ["signout-denied"], ["signout-top"]].forEach(([id]) => {
+  const el = $(id);
+  if (el) el.addEventListener("click", () => signOut(auth));
+});
+
+let requestUnsub = null;
+
+onAuthStateChanged(auth, async (user) => {
+  if (requestUnsub) { requestUnsub(); requestUnsub = null; }
+
+  if (!user) {
+    lock();
+    showGateState("signedout");
+    return;
+  }
+
+  showGateState("loading");
+
+  if (user.email === ADMIN_EMAIL) {
+    unlock();
+    mountAdminPanel();
+    return;
+  }
+
+  const reqRef = doc(db, "requests", user.uid);
+
+  try {
+    const snap = await getDoc(reqRef);
+    if (!snap.exists()) {
+      await setDoc(reqRef, {
+        email: user.email,
+        name: user.displayName || "",
+        status: "pending",
+        requestedAt: serverTimestamp()
+      });
+    }
+  } catch (e) {
+    console.error("Could not create request", e);
+  }
+
+  requestUnsub = onSnapshot(reqRef, (docSnap) => {
+    const data = docSnap.data();
+    const status = data ? data.status : "pending";
+    if (status === "approved") {
+      unlock();
+    } else if (status === "denied") {
+      lock();
+      $("denied-email").textContent = user.email;
+      showGateState("denied");
+    } else {
+      lock();
+      $("pending-email").textContent = user.email;
+      showGateState("pending");
+    }
+  }, (err) => {
+    console.error(err);
+    lock();
+    $("pending-email").textContent = user.email;
+    showGateState("pending");
+  });
+});
+
+function mountAdminPanel() {
+  const mount = $("admin-mount");
+  mount.innerHTML = `
+    <div class="wrap">
+      <div class="admin-panel">
+        <div class="admin-title">Access requests</div>
+        <div id="admin-list"><div class="admin-empty">Loading…</div></div>
+      </div>
+    </div>
+  `;
+  const list = $("admin-list");
+  const reqCol = collection(db, "requests");
+  onSnapshot(reqCol, (qs) => {
+    if (qs.empty) {
+      list.innerHTML = '<div class="admin-empty">No requests yet.</div>';
+      return;
+    }
+    const rows = [];
+    qs.forEach((d) => {
+      const data = d.data();
+      const uid = d.id;
+      const status = data.status || "pending";
+      const when = data.requestedAt && data.requestedAt.toDate ? data.requestedAt.toDate().toLocaleString() : "";
+      rows.push(`
+        <div class="admin-row" data-uid="${uid}">
+          <div class="admin-who">
+            <b>${(data.name || data.email || "Unknown").replace(/</g,"&lt;")}</b>
+            <span class="status-chip ${status}">${status}</span>
+            <div class="admin-meta">${(data.email||"").replace(/</g,"&lt;")} · ${when}</div>
+          </div>
+          <div class="admin-actions">
+            ${status !== "approved" ? `<button class="admin-btn approve" data-action="approved" data-uid="${uid}">Approve</button>` : ""}
+            ${status !== "denied" ? `<button class="admin-btn deny" data-action="denied" data-uid="${uid}">Deny</button>` : ""}
+            ${status === "approved" ? `<button class="admin-btn revoke" data-action="pending" data-uid="${uid}">Revoke</button>` : ""}
+          </div>
+        </div>
+      `);
+    });
+    list.innerHTML = rows.join("");
+    list.querySelectorAll("button[data-action]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const uid = btn.getAttribute("data-uid");
+        const action = btn.getAttribute("data-action");
+        btn.disabled = true;
+        try {
+          await updateDoc(doc(db, "requests", uid), { status: action });
+        } catch (e) {
+          console.error(e);
+          alert("Could not update this request.");
+        }
+        btn.disabled = false;
+      });
+    });
+  });
+}
+</script>
 
 </body></html>
